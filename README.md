@@ -5,15 +5,15 @@
 - 扩展 Field 类，使其具有一种方法 `boolean hasNeighbor(int, int, int)`，其中前两个参数是测试单元格的 `x` 和 `y` 坐标，第三个参数是测试的方向（0 到 3，具有常规含义）。该方法返回在给定位置和方向上是否存在与邻居的连接。这应该通过`位运算`直接从现有方法 getNeighborhood 的返回值确定，而无需循环或条件分支。需要解释实现的原理。
     - `neighborhood`
         - 1: (x+1, y)  ➡     0001
-        - 2: (x, y+1)  ⬆     0010
+        - 2: (x, y+1)  ⬇     0010
         - 3: 1 + 2    ➡⬆  0011
         - 4: (x-1, y)   ⬅     0100
-        - 8: (x, y-1)   ⬇     1000
-    - <<左移
+        - 8: (x, y-1)   ⬆    1000
+    - <<  left shift
         - 1 << `direction` 0 ➡ = 0001
-        - 1 << `direction` 1 ⬆= 0010
-        - 1 << `direction` 2 ⬅= 0100
-        - 1 << `direction` 3 ⬇= 1000
+        - 1 << `direction` 1 ⬇=  0010
+        - 1 << `direction` 2 ⬅=  0100
+        - 1 << `direction` 3 ⬆=  1000
     - & : 按位与(只要有相同bit都为1时结果为1)
         - 1000 & 1000 = 1
         - 1001 & 0110 = 0
@@ -53,10 +53,10 @@
 @Test
 public void testOutside() {
 final Field field = new Field(new String[] {"O"});
-assertFalse(field.hasNeighbor(0, 0, 0));
-assertFalse(field.hasNeighbor(0, 0, 1));
-assertFalse(field.hasNeighbor(0, 0, 2));
-assertFalse(field.hasNeighbor(0, 0, 3));
+	assertFalse(field.hasNeighbor(0, 0, 0));
+	assertFalse(field.hasNeighbor(0, 0, 1));
+	assertFalse(field.hasNeighbor(0, 0, 2));
+	assertFalse(field.hasNeighbor(0, 0, 3));
 }
 ```
 
